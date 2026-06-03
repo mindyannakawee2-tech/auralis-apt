@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Absolute Auralis APT Repository</title>
+</head>
+<body>
+  <h1>Absolute Auralis APT Repository</h1>
+  <p>This page hosts update packages for Absolute Auralis OS.</p>
+
+  <h2>Add repository</h2>
+  <pre>sudo tee /etc/apt/sources.list.d/auralis.list &lt;&lt;'REPO'
+deb [trusted=yes] https://YOUR_USERNAME.github.io/auralis-apt noble main
+REPO
+
+sudo apt update</pre>
+
+  <h2>Repository files</h2>
+  <ul>
+    <li><a href="dists/noble/main/binary-amd64/Packages">Packages</a></li>
+    <li><a href="dists/noble/main/binary-amd64/Packages.gz">Packages.gz</a></li>
+    <li><a href="pool/main/">Package pool</a></li>
+  </ul>
+</body>
+</html>
