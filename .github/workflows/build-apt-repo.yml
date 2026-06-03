@@ -1,0 +1,41 @@
+name: Build Auralis APT Repo
+
+on:
+  push:
+    paths:
+      - "pool/main/**"
+      - ".github/workflows/build-apt-repo.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-repo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Install repo tools
+        run: |
+          sudo apt update
+          sudo apt install -y dpkg-dev gzip
+
+      - name: Create APT repo metadata
+        run: |
+          mkdir -p dists/noble/main/binary-amd64
+          dpkg-scanpackages pool/ /dev/null > dists/noble/main/binary-amd64/Packages
+          gzip -k -f dists/noble/main/binary-amd64/Packages
+
+      - name: Commit generated Packages files
+        run: |
+          git config user.name "Auralis Repo Bot"
+          git config user.email "auralis-bot@users.noreply.github.com"
+
+          git add dists/noble/main/binary-amd64/Packages
+          git add dists/noble/main/binary-amd64/Packages.gz
+
+          git diff --cached --quiet || git commit -m "Auto-update APT package index"
+          git push
