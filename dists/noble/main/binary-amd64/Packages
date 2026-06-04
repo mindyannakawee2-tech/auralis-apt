@@ -2,15 +2,16 @@ Package: auralis-core
 Version: 1.5
 Architecture: all
 Maintainer: Auralis Team <auralis@example.com>
-Depends: bash, xdg-utils
+Depends: bash, sudo, apt
 Filename: pool/main/auralis-core_1.5_all.deb
-Size: 2048
-MD5sum: d83b735a30f23d72ba3835e0196fd662
-SHA1: cff017a83e80f19802ba521124b393703212035f
-SHA256: 42007fbdea61261560d3fb212ec31f4edc9784737b753dd734e6c34bbc41068d
+Size: 1720
+MD5sum: c81ed07bc30a2a1d39e5cf157c831b4e
+SHA1: 367796f66757a33f59513edb582342c47e7e2f26
+SHA256: 856d522d2f6ae37256395912422265d8e39b76ad8148f750d6b99f4cae592f1b
 Section: misc
 Priority: optional
-Description: Core system identity and tools for Auralis OS
- This package installs Auralis release identity, update source,
- welcome app, and system information command.
+Description: Core tools and release identity for Auralis OS
+ This package upgrades Auralis to Absolute+ 1.5 LTS.
+ It installs Auralis command tools, update command, release files,
+ and the Auralis APT repository source.
 
